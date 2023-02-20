@@ -5,10 +5,23 @@ import { movies } from "../utils/movieList";
 const App = () => {
     const [inputValue, setInputValue] = useState("");
     const [results, setResult] = useState(null);
+    const list = []
 
-    function handleClick(e) {}
+    function handleClick(e) {
+        e.preventDefault();
+        const movieList = movies.map((movie) => {
 
-    function handleChange(e) {}
+            return movie.title.toLowerCase();
+        })
+        if (movieList.includes(inputValue.toLowerCase()))
+            list.push(inputValue);
+        setResult(list)
+
+    }
+
+    function handleChange(e) {
+        setInputValue(e.target.value);
+    }
 
     return (
         <div id="main">
@@ -33,4 +46,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default App;
